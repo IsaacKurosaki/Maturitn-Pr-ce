@@ -63,4 +63,24 @@ public class DatabaseHelper {
         return otazky;
     }
 
+    public static void ulozSkoreHrace(String jmeno, int skore) {
+        String sql = "INSERT INTO hraci (Jmeno, Skore) VALUES (?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(jdbcUrl, user, pwd);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, jmeno);
+            pstmt.setInt(2, skore);
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("Skóre bylo úspěšně uloženo do databáze.");
+            } else {
+                System.out.println("Při ukládání skóre došlo k problému.");
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL chyba při ukládání skóre: " + e.getMessage());
+        }
+    }
+
 }

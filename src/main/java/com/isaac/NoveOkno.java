@@ -82,6 +82,8 @@ public class NoveOkno {
     }
 
     private void zobrazVysledky() {
+        DatabaseHelper.ulozSkoreHrace(jmeno, skore);
+        
         layout.getChildren().clear();
 
         Label lblSkore = new Label("Skóre: " + skore + "/" + otazky.size());
