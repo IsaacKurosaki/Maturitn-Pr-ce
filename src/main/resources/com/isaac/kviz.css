@@ -1,0 +1,90 @@
+.root {
+    -fx-padding: 20px;
+    -fx-background-color: #121212;
+    -fx-font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-weight: 300;
+}
+
+.text-field, .combo-box {
+    -fx-pref-width: 200px;
+    -fx-font-size: 14px;
+    -fx-border-color: #333333;
+    -fx-border-radius: 5px;
+    -fx-background-color: #1e1e1e;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #ffffff;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #90a4ae;
+}
+
+.button {
+    -fx-background-color: #263238;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #37474f;
+}
+
+.button:pressed {
+    -fx-background-color: #212121;
+}
+
+.radio-button {
+    -fx-padding: 5px 15px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-text-fill: #ffffff;
+}
+
+.radio-button .radio {
+    -fx-background-radius: 50%;
+    -fx-border-color: #424242;
+    -fx-border-radius: 50%;
+    -fx-background-color: #1e1e1e;
+    -fx-border-width: 2px;
+    -fx-padding: 5px;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: #78909c;
+}
+
+.radio-button:selected .radio > .dot {
+    -fx-background-color: #78909c;
+    -fx-background-insets: 3px;
+    -fx-background-radius: 50%;
+}
+
+.radio-button:focused .radio {
+    -fx-border-color: #90a4ae;
+}
+
+.text-field:hover, .combo-box:hover {
+    -fx-border-color: #90a4ae;
+}
+
+.scroll-pane, .list-view {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #333333;
+    -fx-border-radius: 5px;
+}
+
+.list-cell:filled:selected, .list-cell:filled:selected:hover {
+    -fx-background-color: #37474f;
+    -fx-text-fill: #ffffff;
+}

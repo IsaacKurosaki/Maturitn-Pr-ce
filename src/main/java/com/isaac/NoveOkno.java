@@ -36,6 +36,10 @@ public class NoveOkno {
         layout.setAlignment(Pos.CENTER);
         aktualizujObsahOtazky();
         Scene scene = new Scene(layout, 800, 600);
+
+        String css = this.getClass().getResource("/com/isaac/kviz.css").toExternalForm();
+        scene.getStylesheets().add(css);
+    
         stage.setScene(scene);
         stage.setTitle("Kvíz - Otázky");
         stage.show();
@@ -75,11 +79,11 @@ public class NoveOkno {
     private void zobrazVysledky() {
         Label lblSkore = new Label("Skóre: " + skore + "/" + otazky.size());
         Label lblJmeno = new Label("Jméno: " + jmeno);
-        Button btnDalsi = new Button("Další");
-        btnDalsi.setOnAction(e -> {
+        Button btnZnovu = new Button("Hrát znovu");
+        btnZnovu.setOnAction(e -> {
             Kviz kviz = new Kviz();
             kviz.start(stage);
         });
-        layout.getChildren().addAll(lblSkore, lblJmeno, btnDalsi);
+        layout.getChildren().addAll(lblSkore, lblJmeno, btnZnovu);
     }
 }

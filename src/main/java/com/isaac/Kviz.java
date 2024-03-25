@@ -73,6 +73,10 @@ public class Kviz extends Application{
 
 
         Scene scene = new Scene(root, 400, 300);
+
+        String css = this.getClass().getResource("/com/isaac/style.css").toExternalForm();
+        scene.getStylesheets().add(css);
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
