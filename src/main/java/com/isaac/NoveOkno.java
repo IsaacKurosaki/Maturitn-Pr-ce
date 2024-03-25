@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.util.ArrayList;
@@ -35,7 +37,10 @@ public class NoveOkno {
         layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
         aktualizujObsahOtazky();
-        Scene scene = new Scene(layout, 800, 600);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(layout);
+        scrollPane.setFitToWidth(true);
+        Scene scene = new Scene(scrollPane, 800, 600);
 
         String css = this.getClass().getResource("/com/isaac/kviz.css").toExternalForm();
         scene.getStylesheets().add(css);
@@ -77,13 +82,30 @@ public class NoveOkno {
     }
 
     private void zobrazVysledky() {
+        layout.getChildren().clear();
+
         Label lblSkore = new Label("Skóre: " + skore + "/" + otazky.size());
         Label lblJmeno = new Label("Jméno: " + jmeno);
+        layout.getChildren().addAll(lblSkore, lblJmeno);
+
+        for (Otazka otazka : otazky) {
+            VBox questionBox = new VBox(5);
+            questionBox.getStyleClass().add("question-box");
+
+            Label lblQuestion = new Label(otazka.getTextOtazky());
+            Label lblCorrectAnswer = new Label("Správná odpověď: " + otazka.getSpravnaOdpoved());
+            lblCorrectAnswer.getStyleClass().add("correct-answer");
+
+            questionBox.getChildren().addAll(lblQuestion, lblCorrectAnswer);
+            layout.getChildren().add(questionBox);
+        }
+
         Button btnZnovu = new Button("Hrát znovu");
         btnZnovu.setOnAction(e -> {
             Kviz kviz = new Kviz();
             kviz.start(stage);
         });
-        layout.getChildren().addAll(lblSkore, lblJmeno, btnZnovu);
+
+        layout.getChildren().add(btnZnovu);
     }
 }

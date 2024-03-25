@@ -62,4 +62,5 @@ public class DatabaseHelper {
 
         return otazky;
     }
+
 }
